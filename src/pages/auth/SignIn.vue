@@ -31,7 +31,7 @@
             <input
               class="w-full p-3 pl-2 placeholder:text-sm focus:outline-none"
               required
-              type="text"
+              type="email"
               placeholder="Your Email"
             />
           </div>
@@ -48,6 +48,13 @@
               <font-awesome-icon v-if="!isShowPassword" :icon="['far', 'eye-slash']" />
               <font-awesome-icon v-if="isShowPassword" :icon="['far', 'eye']" />
             </button>
+          </div>
+          <div class="flex justify-between mb-7">
+            <div class="flex items-center gap-3">
+              <input type="checkbox" name="remember" id="remember">
+              <label for="remember" class="text-sm">Remember</label>
+            </div>
+            <router-link class="text-blue-600" :to="{name:'page.forgot'}">Forgot password?</router-link>
           </div>
           <button
             class="bg-blue-600 w-full text-white py-4 px-10 rounded-xl focus:bg-blue-900 hover:bg-blue-900"

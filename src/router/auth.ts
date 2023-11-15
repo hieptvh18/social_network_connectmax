@@ -1,6 +1,6 @@
 const login = [
     {
-        'path': "/",
+        'path': "/auth",
         component: ()=> import('@/layouts/AuthLayout.vue'),
 
         children:[
@@ -10,9 +10,19 @@ const login = [
                 component: ()=> import("@/pages/auth/SignUp.vue")
             },
             {
-                'path':'login',
-                'name':'page.signin',
+                path:'login',
+                name:'page.signin',
                 component: ()=> import("@/pages/auth/SignIn.vue")
+            },
+            {
+                path:'forgotpassword',
+                name:'page.forgot',
+                component: ()=> import("@/pages/auth/ForgotPassword.vue"),
+            },
+            {
+                path:'forgotpassword/verify',
+                name:'page.forgotpassword.verify',
+                component: ()=> import("@/pages/auth/VerifyEmail.vue")
             }
         ]
     }

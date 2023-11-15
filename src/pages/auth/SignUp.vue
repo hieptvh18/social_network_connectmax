@@ -31,7 +31,7 @@
             <input
               class="w-full p-3 pl-2 placeholder:text-sm focus:outline-none"
               required
-              type="text"
+              type="email"
               placeholder="Your Email"
             />
           </div>
