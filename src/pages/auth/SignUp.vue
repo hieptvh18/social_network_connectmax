@@ -79,7 +79,7 @@
           </div>
 
           <button
-            class="bg-blue-600 w-full text-white py-4 px-10 rounded-xl focus:bg-blue-900 hover:bg-blue-900"
+            class="bg-primary w-full text-white py-4 px-10 rounded-xl focus:bg-blue-900 hover:bg-blue-900"
           >
             Sign up
           </button>

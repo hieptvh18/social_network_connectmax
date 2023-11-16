@@ -1,5 +1,5 @@
-@import './base.css';
-@import './datepicker.css';
+@import './styles/base.css';
+@import './styles/datepicker.css';
 
 /* using TailwindCSS */
 @tailwind base;

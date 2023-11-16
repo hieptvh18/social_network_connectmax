@@ -3,7 +3,7 @@
     <router-link class="hidden sm:inline-block" :to="{ name: 'page.newsfeed' }">
       <div class="logo flex items-center">
         <div class=""><img src="@/assets/images/Logo.png" class="mr-2" alt="logo" /></div>
-        <span class="text-sm sm:text-sm md:text-lg font-bold">Connect Max</span>
+        <span class="text-sm sm:text-sm md:text-lg text-secondary font-bold">Connect Max</span>
       </div>
     </router-link>
     <!-- row reverse if sreen = mobile -->
@@ -16,7 +16,7 @@
         class="focus:outline-none rounded-lg h-full w-full placeholder:text-xs sm:placeholder:text-sm" />
       </div>
       <div class="flex items-center gap-5">
-        <router-link class="font-medium hidden sm:inline-block" :to="{ name: 'page.newsfeed' }"
+        <router-link class="font-medium hidden text-secondary sm:inline-block" :to="{ name: 'page.newsfeed' }"
           >Simon</router-link
         >
         <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg overflow-hidden">

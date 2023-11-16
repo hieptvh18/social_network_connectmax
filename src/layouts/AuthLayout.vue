@@ -2,10 +2,10 @@
   <div class="auth-layout-container mb-10">
     <header class="flex justify-between items-center m-7">
       <div class="box-logo">
-        <a href="/" class="logo flex align-middle">
+        <router-link :to="{name:'page.newsfeed'}" class="logo flex align-middle">
           <img src="@/assets/images/Logo.png" class="mr-2" alt="logo" />
           <span class="text-sm sm:text-lg font-bold">Connect Max</span>
-        </a>
+        </router-link>
       </div>
       <div class="lang">
         <select

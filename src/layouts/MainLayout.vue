@@ -7,7 +7,7 @@
             <aside class="hidden sm:inline-block min-h-screen sm:w-2/12 bg-white py-6 px-5">
                 <Sidebar></Sidebar>
             </aside>
-            <section class="sm:w-10/12">
+            <section class="w-full sm:w-10/12">
                 <router-view></router-view>
             </section>
         </main>
@@ -27,6 +27,7 @@ export default{
 </script>
 <style lang="scss">
 body{
-    background-color: #4E5D7808;
+    // background-color: #4E5D7808;
+    color: var(--secondary-color);
 }
 </style>

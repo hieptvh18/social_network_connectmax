@@ -8,7 +8,7 @@
       <div class="">
         <form action="" method="POST" class="mb-10">
           <button
-            class="bg-blue-600 w-full text-white py-4 px-10 rounded-xl focus:bg-blue-900 hover:bg-blue-900"
+            class="bg-primary w-full text-white py-4 px-10 rounded-xl focus:bg-blue-900 hover:bg-blue-900"
           >
             Skip now
           </button>
