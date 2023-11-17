@@ -8,7 +8,7 @@
                 What’s happening?
             </div>
         </div>
-        <div class="flex justify-between items-center">
+        <div class="flex justify-between items-center text-xs md:text-sm">
             <div class="camera flex items-center gap-2 cursor-pointer">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.6384 4.40726C15.8604 4.52153 16 4.75032 16 5.00004V11.6667C16 11.9164 15.8604 12.1452 15.6384 12.2595C15.4163 12.3738 15.1491 12.3543 14.9458 12.2092L10.2792 8.87587C10.104 8.75072 10 8.54868 10 8.33338C10 8.11808 10.104 7.91603 10.2792 7.79089L14.9458 4.45755C15.1491 4.3124 15.4163 4.293 15.6384 4.40726ZM11.6471 8.34988L14.5 10.2499V6.49988L11.6471 8.34988Z" fill="white"/>

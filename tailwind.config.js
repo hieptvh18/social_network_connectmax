@@ -14,7 +14,10 @@ export default {
         },
         secondary1:"#4E5D7808",
         secondary2:"#4E5D7899",
-        primary: "#377DFF"
+        primary: "#377DFF",
+        success:{
+          0:"var(--success-color-0)"
+        }
       },
       spacing:{
         30:"30px",

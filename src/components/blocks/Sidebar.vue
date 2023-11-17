@@ -1,5 +1,5 @@
 <template>
-  <ul class="">
+  <ul class="sm:text-sm md:text-base">
     <li class="sidebar-item mb-3">
       <router-link
         class="group flex gap-5 items-center rounded-lg h-11 text-secondary hover:bg-secondary hover:text-white py-4 px-5"
@@ -31,7 +31,7 @@
             />
           </svg>
         </div>
-        <span class="font-medium">Feed</span>
+        <span class="font-medium md:inline-block sm:hidden">Feed</span>
       </router-link>
     </li>
     <li class="sidebar-item mb-3">
@@ -73,7 +73,7 @@
             />
           </svg>
         </div>
-        <span class="font-medium">Message</span>
+        <span class="font-medium md:inline-block sm:hidden">Message</span>
       </router-link>
     </li>
     <li class="sidebar-item mb-3">
@@ -127,7 +127,7 @@
             />
           </svg>
         </div>
-        <span class="font-medium">Logout</span>
+        <span class="font-medium md:inline-block sm:hidden">Logout</span>
       </router-link>
     </li>
   </ul>

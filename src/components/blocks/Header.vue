@@ -3,7 +3,7 @@
     <router-link class="hidden sm:inline-block" :to="{ name: 'page.newsfeed' }">
       <div class="logo flex items-center">
         <div class=""><img src="@/assets/images/Logo.png" class="mr-2" alt="logo" /></div>
-        <span class="text-sm sm:text-sm md:text-lg text-secondary font-bold">Connect Max</span>
+        <span class="hidden md:inline-block text-sm sm:text-sm md:text-lg text-secondary font-bold">Connect Max</span>
       </div>
     </router-link>
     <!-- row reverse if sreen = mobile -->

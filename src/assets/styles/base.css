@@ -1,4 +1,9 @@
 :root{
     --secondary-color:#4E5D78;
+    --bg-secondary-color: linear-gradient(0deg, #FFFFFF, #FFFFFF),
+    linear-gradient(0deg, rgba(78, 93, 120, 0.03), rgba(78, 93, 120, 0.03));
+    
     --primary-color:#377DFF;
+    --success-color-0: linear-gradient(0deg, #38CB89, #38CB89),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
 }

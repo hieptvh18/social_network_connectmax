@@ -3,11 +3,13 @@
     <!-- col left -->
     <div class="w-full sm:w-3/4 rounded-2xl bg-secondary1">
       <div class="flex gap-30 justify-between min-h-screen mx-30 mt-30">
-        <div class="w-full sm:w-[64%]">
+        <div class="w-full lg:w-[64%]">
           <create-news-feed></create-news-feed>
+          <post-items></post-items>
         </div>
-        <div class="hidden sm:inline-block sm:w-[36%]">
+        <div class="hidden lg:inline-block lg:w-[36%]">
           <you-may-like></you-may-like>
+          <recent-events></recent-events>
         </div>
       </div>
     </div>
