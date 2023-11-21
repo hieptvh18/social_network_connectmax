@@ -31,7 +31,7 @@ export default{
     name:'friend-list',
     data(){
       return {
-        friends:[1,1,1,1,1,1,1]
+        friends:[1,1,1,1,1,1,1,1,1,1,1]
       }  
     },
     methods:{

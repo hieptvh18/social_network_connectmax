@@ -1,4 +1,7 @@
 <template>
+  <Toast />
+  <ConfirmDialog></ConfirmDialog>
+
   <ul class="sm:text-sm md:text-base">
     <li class="sidebar-item mb-3">
       <router-link
@@ -77,9 +80,9 @@
       </router-link>
     </li>
     <li class="sidebar-item mb-3">
-      <router-link
-        class="flex gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white py-4 px-5"
-        :to="{ name: 'page.signin' }"
+      <div
+      @click="confirmLogoutDialog()" icon="pi pi-check" label="Confirm"
+        class="flex gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white py-4 px-5 cursor-pointer"
       >
         <div class="">
           <svg
@@ -128,16 +131,41 @@
           </svg>
         </div>
         <span class="font-medium md:inline-block sm:hidden">Logout</span>
-      </router-link>
+      </div>
     </li>
   </ul>
 </template>
-<script lang="ts">
-export default {
-  name: 'sidebar-block',
-  components: {}
+
+<script lang="ts" setup>
+import { useConfirm } from "primevue/useconfirm";
+import { useToast } from "primevue/usetoast";
+import router from "@/router";
+
+const confirm = useConfirm();
+const toast = useToast();
+
+const handleLogout = () =>{
+  console.log('logout handle');
 }
+
+const confirmLogoutDialog = () => {
+    confirm.require({
+        message: 'Do you want to logout?',
+        header: 'Logout Confirm',
+        icon: 'pi pi-info-circle',
+        rejectClass: 'p-button-text p-button-text',
+        acceptClass: 'p-button-danger p-button-text',
+        accept: () => {
+            toast.add({ severity: 'info', summary: 'Confirmed', detail: 'Record deleted', life: 3000 });
+            router.push({ name: 'page.signin'})
+        },
+        reject: () => {
+            toast.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+        }
+    });
+};
 </script>
+
 <style lang="scss" scoped>
 .sidebar-item {
   .active {
