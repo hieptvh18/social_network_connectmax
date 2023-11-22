@@ -38,7 +38,7 @@
           </svg>
         </button>
         <!-- icon emoij -->
-        <div class="relative flex items-center">
+        <div class="flex items-center">
           <button @click="isShowEmoij = !isShowEmoij" type="button">
             <svg
               class="pointer-events-none"
@@ -58,7 +58,8 @@
               />
             </svg>
           </button>
-          <div style="position: absolute; top: 0; left: 110%">
+          <div
+          class="absolute right-[13%] bottom-[12%] md:bottom-[10%] md:left-[20%] lg:left-[33%] z-50">
             <VuemojiPicker v-if="isShowEmoij" @emojiClick="onSelectEmoji" />
           </div>
         </div>
@@ -96,14 +97,9 @@ const inputComment = ref('')
 const isShowEmoij = ref(false)
 const file_comment_preview = ref('')
 
-function onSelectEmoji(emoji: any) {
+const onSelectEmoji = (emoji: any) => {
   console.log(emoji.unicode)
   inputComment.value += emoji.unicode
-}
-
-function showEmoji(emoji: any) {
-  alert(`emoji ${emoji.i} selected, check console for details`)
-  console.log(emoji)
 }
 
 const triggerInputFile = (e: {}) => {

@@ -18,7 +18,7 @@
                 </template>
             </Dialog>
         </div>
-        <div class="bg-white rounded-2xl p-[18px] mb-30"
+        <div class="relative bg-white rounded-2xl p-[18px] mb-30"
             v-for="(post, index) in [1,1,1,1]" :key="index"
             >
             <div class="flex justify-between items-center mb-[18px]">
