@@ -39,7 +39,7 @@
   </div>
 </template>
 <script lang="ts">
-import StoriesSlider from '@/components/newsfeed/StoriesSlider.vue';
+import StoriesSlider from '@/components/newsfeed/Story/Index.vue';
 import FriendList from '@/components/newsfeed/FriendList.vue';
 import CreateNewsFeed from '@/components/newsfeed/CreateNewsFeed.vue';
 import RecentEvents from '@/components/newsfeed/RecentEvents.vue';

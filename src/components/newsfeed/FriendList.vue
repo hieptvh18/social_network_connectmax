@@ -17,7 +17,7 @@
                     <div class="avatar w-10 h-10 rounded-full overflow-hidden">
                         <img src="https://i.pinimg.com/280x280_RS/28/db/5e/28db5ed514a161de341f385f0244f720.jpg" class="w-full object-cover" alt="name">
                     </div>
-                    <span class="text-secondary font-medium">John simon</span>
+                    <span class="text-secondary font-medium w-[65%] text-wrap-no overflow-hidden text-ellipsis">John simon</span>
                 </div>
                 <div class="status">
                     <span class="text-xs">2 min</span>
