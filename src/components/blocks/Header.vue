@@ -16,7 +16,7 @@
         class="focus:outline-none rounded-lg h-full w-full placeholder:text-xs sm:placeholder:text-sm" />
       </div>
       <div class="flex items-center gap-5">
-        <router-link class="font-medium hidden text-secondary sm:inline-block" :to="{ name: 'page.newsfeed' }"
+        <router-link class="font-medium hidden text-secondary sm:inline-block" :to="{name:'page.profile', params:{username: 'hieptvh'}}"
           >Simon</router-link
         >
         <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg overflow-hidden">
@@ -31,7 +31,7 @@
 
     <!-- if screen mobile -> show -->
     <div class="w-4 h-4 sm:hidden">
-      <router-link :to="{name:'page.newsfeed'}">
+      <router-link :to="{name:'page.profile', params:{username: 'hieptvh'}}">
             <img src="@/assets/images/Message.svg" class="w-full object-cover" alt="">
         </router-link>
     </div>

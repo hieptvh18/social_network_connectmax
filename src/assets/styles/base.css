@@ -11,3 +11,7 @@
 .text-wrap-no{
     text-wrap: nowrap;
 }
+
+.box-shadow-basic{
+    box-shadow: 0px 4px 8px 0px #0000000A;
+}
