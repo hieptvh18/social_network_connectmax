@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="hidden sm:block">
         <div class="flex justify-between items-center mb-5">
             <h5 class="text-secondary font-bold">Friends</h5>
             <div class="bar cursor-pointer">

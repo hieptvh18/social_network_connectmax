@@ -18,7 +18,7 @@
                 :style="{ backgroundImage: 'url(' + story.bg + ')' }"
                 @click="openStory(index)"
             >
-                <div class="stories-menu-slider__item-author">
+                <div class="stories-menu-slider__item-author text-xs sm:text-sm md:text-base">
                     {{ story.username }}
                 </div>
             </swiper-slide>
@@ -84,13 +84,13 @@ onBeforeMount(() => {
         }
 
         @include r($md) {
-            width: 35rem;
-            height: 35rem;
+            // width: 35rem;
+            // height: 35rem;
         }
 
         @include r($sm) {
-            width: 40rem;
-            height: 40rem;
+            // width: 40rem;
+            // height: 40rem;
         }
 
         &:not(:last-child) {

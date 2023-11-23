@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper mb-[70px] sm:mb-0">
          <!-- ==== dialog ==== -->
          <div class="card flex justify-content-center">
             <Dialog v-model:visible="showDialog" modal header="Header" :style="{ width: '50rem' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
@@ -18,7 +18,7 @@
                 </template>
             </Dialog>
         </div>
-        <div class="relative bg-white rounded-2xl p-[18px] mb-30"
+        <div class="relative bg-white rounded-2xl p-[18px] mb-2 sm:mb-30"
             v-for="(post, index) in [1,1,1,1]" :key="index"
             >
             <div class="flex justify-between items-center mb-[18px]">
