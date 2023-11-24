@@ -1,6 +1,6 @@
 const newsfeed = [
     {
-        path:'/',
+        path:'',
         component: ()=>import('@/layouts/MainLayout.vue'),
 
         children:[

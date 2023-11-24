@@ -1,5 +1,23 @@
 <template>
   <div class="profile-wrapper">
+    <!-- ==== dialog ==== -->
+    <div class="card flex justify-content-center">
+        <Dialog v-model:visible="showDialog" modal header="Header" :style="{ width: '50rem' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
+                <template #header>
+                    <div class="inline-flex align-items-center justify-content-center gap-2">
+                        <Avatar image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png" shape="circle" />
+                        <span class="font-bold white-space-nowrap">Edit basic info</span>
+                    </div>
+                </template>
+                <p class="m-0">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <template #footer>
+                    <Button label="Ok" icon="pi pi-check" @click="showDialog = false" autofocus />
+                </template>
+            </Dialog>
+        </div>
     <div class="banner relative rounded-sm h-[267px] md:h-[484px] box-shadow-basic">
       <div class="banner-img-box w-full h-[112px] md:h-[350px]">
         <img
@@ -17,7 +35,10 @@
             class="w-full h-full object-cover"
             alt="banner"
           />
+
+          <input type="file" ref="inputUploapAvatar" class="hidden" name="" id="">
           <button
+          ref="btnUploadAvatar"
             class="rounded-full flex justify-center items-center bg-white overflow-hidden w-[26px] h-[26px] md:w-[30px] md:h-[30px] absolute right-0 bottom-1 md:right-2 md:bottom-4"
           >
             <svg
@@ -52,10 +73,17 @@
         </div>
         <div class="">
           <button
+          @click="showDialog = !showDialog"
             class="focus:bg-secondary-4e text-sm font-medium py-1 px-2 md:py-2 md:px-3 bg-secondary1 rounded-md"
           >
             Edit basic info
           </button>
+           <!-- <button 
+          @v-if="false"
+          class="text-sm text-white font-medium py-1 px-2 md:py-2 md:px-3 bg-green-500 rounded-md">Message</button> -->
+          <!-- <button 
+          @v-if="false"
+          class="text-sm text-white font-medium py-1 px-2 md:py-2 md:px-3 bg-primary rounded-md">Follow</button> -->
         </div>
       </div>
     </div>
@@ -80,7 +108,9 @@
             </li>
 
             <li>
-                <button class="w-full text-xs md:text-sm font-md rounded-md focus:bg-secondary-33 bg-secondary1 px-3 py-2">Edit Details</button>
+                <button
+                @click="showDialog = !showDialog"
+                 class="w-full text-xs md:text-sm font-md rounded-md focus:bg-secondary-33 bg-secondary1 px-3 py-2">Edit Details</button>
             </li>
           </ul>
         </div>
@@ -102,6 +132,16 @@
 import { useRoute } from 'vue-router'
 import CreateNewsFeed from '@/components/newsfeed/CreateNewsFeed.vue';
 import PostItems from '@/components/newsfeed/PostItems.vue';
+import Dialog from 'primevue/dialog';
+import {ref,onMounted} from 'vue';
 
-const username = useRoute().params.username
+const username = useRoute().params.username;
+const showDialog = ref(false);
+const inputUploapAvatar = ref(null);
+const btnUploadAvatar = ref(null);
+
+onMounted(()=>{
+  btnUploadAvatar.value.addEventListener('click', () => inputUploapAvatar.value.click())
+})
+
 </script>

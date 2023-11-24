@@ -4,7 +4,7 @@
             <Header></Header>
         </header>
         <main class="flex flex-col sm:flex-row">
-            <aside class="fixed bottom-0 left-0 z-50 sm:relative sm:inline-block sm:min-h-screen sm:w-2/12 bg-white pt-2 sm:py-6 px-5">
+            <aside class="w-full fixed bottom-0 left-0 z-50 sm:relative sm:inline-block sm:min-h-screen sm:w-2/12 bg-white pt-2 sm:py-6 px-5">
                 <Sidebar></Sidebar>
             </aside>
             <section class="w-full sm:w-10/12">

@@ -8,7 +8,7 @@
     </div>
     <div class="my-[20px] mx-[18px]">
       <div class="flex items-start gap-3 ">
-        <div class="avatar h-50 w-50 overflow-hidden rounded-full border-2 border-primary">
+        <div class="avatar min-w[50px] h-50 w-50 overflow-hidden rounded-full border-2 border-primary">
           <img
             src="https://i.pinimg.com/280x280_RS/28/db/5e/28db5ed514a161de341f385f0244f720.jpg"
             class="w-full h-full object-cover"
