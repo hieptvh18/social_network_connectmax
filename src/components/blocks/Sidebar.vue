@@ -40,7 +40,7 @@
     <li class="sidebar-item mb-3">
       <router-link
         class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white sm:py-4 px-1"
-        :to="{ name: 'page.newsfeed' }"
+        :to="{ name: 'page.message' }"
       >
         <div class="">
           <svg
