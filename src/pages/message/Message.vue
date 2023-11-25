@@ -3,7 +3,7 @@
     <!-- col left -->
     <div class="w-full sm:w-1/3 mt-30 ml-30 rounded-2xl bg-white">
         <div class="flex items-center justify-between gap-5 m-5">
-            <div class="">
+            <div class="w-full">
                 <form-search-friend></form-search-friend>
             </div>
             <button class="">
