@@ -10,6 +10,11 @@ const login = [
                 component: ()=> import("@/pages/auth/SignUp.vue")
             },
             {
+                'path':'register/verify',
+                'name':'page.signup.verify',
+                component: ()=> import("@/pages/auth/VerifyCodeRegister.vue")
+            },
+            {
                 path:'login',
                 name:'page.signin',
                 component: ()=> import("@/pages/auth/SignIn.vue")
