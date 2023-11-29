@@ -5,7 +5,7 @@
   <ul class="flex justify-between sm:flex-col sm:text-sm md:text-base">
     <li class="sidebar-item mb-3">
       <router-link
-        class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 text-secondary hover:bg-secondary hover:text-white sm:py-4 px-1"
+        class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 text-secondary hover:bg-secondary hover:text-white sm:py-4 px-[15px]"
         :to="{ name: 'page.newsfeed' }"
       >
         <div class="">
@@ -39,7 +39,7 @@
     </li>
     <li class="sidebar-item mb-3">
       <router-link
-        class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white sm:py-4 px-1"
+        class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white sm:py-4 px-[15px]"
         :to="{ name: 'page.message' }"
       >
         <div class="">
@@ -81,7 +81,7 @@
     </li>
     <li class="sidebar-item mb-3">
       <router-link
-        class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white sm:py-4 px-1"
+        class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white sm:py-4 px-[15px]"
         :to="{ name: 'page.notification' }"
       >
         <div class="">
@@ -95,7 +95,7 @@
     </li>
     <li class="sidebar-item mb-3">
       <router-link
-        class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white sm:py-4 px-1"
+        class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white sm:py-4 px-[15px]"
         :to="{ name: 'page.newsfeed' }"
       >
         <div class="">
@@ -109,7 +109,7 @@
     </li>
     <li class="sidebar-item mb-3">
       <router-link
-        class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white sm:py-4 px-1"
+        class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white sm:py-4 px-[15px]"
         :to="{ name: 'page.profile',params:{username:'hieptvh'} }"
       >
         <div class="">
@@ -125,8 +125,8 @@
     </li>
     <li class="sidebar-item mb-3">
       <router-link
-        class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white sm:py-4 px-1"
-        :to="{ name: 'page.newsfeed' }"
+        class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white sm:py-4 px-[15px]"
+        :to="{ name: 'page.setting' }"
       >
         <div class="">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -140,7 +140,7 @@
     <li class="sidebar-item mb-3">
       <div
       @click="confirmLogoutDialog()" icon="pi pi-check" label="Confirm"
-        class="flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white sm:py-4 px-1 cursor-pointer"
+        class="flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white sm:py-4 px-[15px] cursor-pointer"
       >
         <div class="">
           <svg

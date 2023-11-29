@@ -31,12 +31,38 @@
                         <span class="text-xs text-secondary-4e font-medium">2d. Public</span>
                     </div>
                 </div>
-                <button class="">
+                <!-- dropdown menu -->
+                <div class="">
+                    <Menu as="div" class="relative inline-block text-left">
+                        <div>
+                            <MenuButton class="inline-flex w-full justify-center gap-x-1.5  px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 6C0.9 6 0 6.9 0 8C0 9.1 0.9 10 2 10C3.1 10 4 9.1 4 8C4 6.9 3.1 6 2 6ZM14 6C12.9 6 12 6.9 12 8C12 9.1 12.9 10 14 10C15.1 10 16 9.1 16 8C16 6.9 15.1 6 14 6ZM8 6C6.9 6 6 6.9 6 8C6 9.1 6.9 10 8 10C9.1 10 10 9.1 10 8C10 6.9 9.1 6 8 6Z" fill="currentColor"/>
+                                <path d="M2 6C0.9 6 0 6.9 0 8C0 9.1 0.9 10 2 10C3.1 10 4 9.1 4 8C4 6.9 3.1 6 2 6ZM14 6C12.9 6 12 6.9 12 8C12 9.1 12.9 10 14 10C15.1 10 16 9.1 16 8C16 6.9 15.1 6 14 6ZM8 6C6.9 6 6 6.9 6 8C6 9.1 6.9 10 8 10C9.1 10 10 9.1 10 8C10 6.9 9.1 6 8 6Z" fill="currentColor"/>
+                                </svg>
+                            </MenuButton>
+                        </div>
+                    
+                        <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                            <MenuItems class="text-sm absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <div class="py-1">
+                                <MenuItem>
+                                    <button class="block py-2 px-4 w-full hover:bg-secondary2 hover:text-white">Go to post</button>
+                                </MenuItem>
+                                <MenuItem>
+                                    <button class="block py-2 px-4 w-full hover:bg-secondary2 hover:text-white">Delete post</button>
+                                </MenuItem>
+                            </div>
+                            </MenuItems>
+                        </transition>
+                    </Menu>
+                </div>
+                <!-- <button class="">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2 6C0.9 6 0 6.9 0 8C0 9.1 0.9 10 2 10C3.1 10 4 9.1 4 8C4 6.9 3.1 6 2 6ZM14 6C12.9 6 12 6.9 12 8C12 9.1 12.9 10 14 10C15.1 10 16 9.1 16 8C16 6.9 15.1 6 14 6ZM8 6C6.9 6 6 6.9 6 8C6 9.1 6.9 10 8 10C9.1 10 10 9.1 10 8C10 6.9 9.1 6 8 6Z" fill="currentColor"/>
                     <path d="M2 6C0.9 6 0 6.9 0 8C0 9.1 0.9 10 2 10C3.1 10 4 9.1 4 8C4 6.9 3.1 6 2 6ZM14 6C12.9 6 12 6.9 12 8C12 9.1 12.9 10 14 10C15.1 10 16 9.1 16 8C16 6.9 15.1 6 14 6ZM8 6C6.9 6 6 6.9 6 8C6 9.1 6.9 10 8 10C9.1 10 10 9.1 10 8C10 6.9 9.1 6 8 6Z" fill="currentColor"/>
                     </svg>
-                </button>
+                </button> -->
             </div>
             <!-- caption -->
             <p class="font-normal text-sm mb-[18px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea rerum atque laboriosam adipisci iure illum doloribus dolorum beatae?</p>
@@ -122,13 +148,13 @@
 </template>
 <script lang="ts">
 import { ref } from 'vue';
-import Dropdown from 'primevue/dropdown';
 import Dialog from 'primevue/dialog';
 import FormCommentPost from '@/components/common/FormCommentPost.vue';
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 
 export default{
     name:'post-items',
-    components:{FormCommentPost},
+    components:{FormCommentPost, Menu, MenuButton, MenuItem, MenuItems},
     data(){
         return{
             file_comment_preview:"",
@@ -156,7 +182,19 @@ export default{
         },
     },
     setup(){
-        
+        const selectedCity = ref();
+        const cities = ref([
+            { name: 'New York', code: 'NY' },
+            { name: 'Rome', code: 'RM' },
+            { name: 'London', code: 'LDN' },
+            { name: 'Istanbul', code: 'IST' },
+            { name: 'Paris', code: 'PRS' }
+        ]);
+
+        return {
+            selectedCity,
+            cities
+        }
     }
 }
 </script>

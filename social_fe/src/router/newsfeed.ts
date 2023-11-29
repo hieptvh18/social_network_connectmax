@@ -1,6 +1,9 @@
 const newsfeed = [
     {
         path:'',
+        meta:{
+            title:'Connect Max'
+        },
         component: ()=>import('@/layouts/MainLayout.vue'),
 
         children:[

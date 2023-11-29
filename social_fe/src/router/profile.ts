@@ -2,7 +2,9 @@ const profile = [
     {
         path:'/',
         component: ()=>import('@/layouts/MainLayout.vue'),
-
+        meta:{
+            title:'Profile'
+        },
         children:[
             {
                 path:'/:username',

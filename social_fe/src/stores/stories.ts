@@ -1,10 +1,10 @@
-// data fake
 import { defineStore } from 'pinia';
 // import {fetchStoriesHomepage} from '../api/story.js';
 
 export const useStoriesStore = defineStore('stories', {
   state: () => {
     return {
+      // data fake
       stories: [
         {
           id: 1,

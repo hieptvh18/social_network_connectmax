@@ -1,12 +1,15 @@
 const message = [
     {
+        name:'page.message',
         path:'',
+        meta:{
+            title:'Message'
+        },
         component:()=>import('@/layouts/MainLayout.vue'),
 
         children:[
             {
                 path:'/messager',
-                name:'page.message',
                 component:()=>import('@/pages/message/Message.vue')
             }
         ]
