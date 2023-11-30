@@ -29,9 +29,14 @@ class User extends Authenticatable
         'bio',
         'phone',
         'avatar',
-        'google_id',
-        'facebook_id',
-        'status'
+        'birthday',
+        'location',
+        'gender',
+        'status',
+        'facebook_link',
+        'instagram_link',
+        'twitter_link',
+        'linkedln_link',
     ];
 
     /**
@@ -59,7 +64,6 @@ class User extends Authenticatable
         return $this->hasMany(Post::class,'user_id');
     }
 
-
     public function following(): HasMany
     {
         return $this->hasMany(Follow::class,'user_id');
@@ -83,5 +87,10 @@ class User extends Authenticatable
 
     public function socialAccounts(){
         return $this->hasMany(SocialAccount::class,'user_id');
+    }
+
+    // 1-1
+    public function userVerify(){
+        return $this->hasOne(UserVerify::class,'user_id');
     }
 }

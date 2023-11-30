@@ -18,35 +18,49 @@ class AuthService extends AbstractApi
 {
     public function create($request)
     {
-        if (!$request->username || !$request->name || !$request->email || !$request->password) {
-            return $this->respError(['data'=>$request->all()],'Data is not valid!');
-        }
         DB::beginTransaction();
         try {
-            $userExistEmail = User::where('email', $request->email)->first();
-            $userExistUsername = User::where('username', $request->username)->first();
-
-            if ($userExistEmail) {
-                return $this->respError(false,'Email exist customer!');
-            }
-
-            if ($userExistUsername) {
-                return $this->respError(false,'Username exist customer!');
-            }
-
             $model = new User();
             $model->fill($request->all());
+            $model->username = uniqid();
             $model->password = Hash::make($request->password);
             $model->save();
 
             DB::commit();
             event(new EventUserRegisterAccount($model));
 
-            return $this->respSuccess(['data'=>$request->all()],'Register success!');
+            return $this->respSuccess(['data'=>$model],'Register success!');
         } catch (Throwable $e) {
             DB::rollBack();
             report($e);
             return $this->respError(false,'Something wrong! '.$e->getMessage(),Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public function login($request){
+        try {
+            $credentials = request(['username', 'password']);
+            if (!Auth::attempt($credentials)) {
+                return response()->json(['status' => 'fail', 'message' => 'Username or password invalid!', 'data' => []], Response::HTTP_UNAUTHORIZED);
+            }
+            // ok
+            $user = Auth::user();
+
+            $token = $user->createToken('token')->plainTextToken;
+
+            $cookie = cookie('jwtlogin', $token, 60 * 24); //1 day
+
+            return response()->json([
+                'status' => 'ok',
+                'data' => [
+                    'token' => $token,
+                    'data' => $user
+                ],
+                'message' => 'Auth success!'
+            ], 200)->withCookie($cookie);
+        } catch (\Throwable $e) {
+            report($e);
+            return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
         }
     }
 

@@ -29,30 +29,7 @@ class AuthController extends Controller
      */
     public function loginUsername(Request $request)
     {
-        try {
-            $credentials = request(['username', 'password']);
-            if (!Auth::attempt($credentials)) {
-                return response()->json(['status' => 'fail', 'message' => 'Username or password invalid!', 'data' => []], Response::HTTP_UNAUTHORIZED);
-            }
-            // ok
-            $user = Auth::user();
-
-            $token = $user->createToken('token')->plainTextToken;
-
-            $cookie = cookie('jwtlogin', $token, 60 * 24); //1 day
-
-            return response()->json([
-                'status' => 'ok',
-                'data' => [
-                    'token' => $token,
-                    'data' => $user
-                ],
-                'message' => 'Auth success!'
-            ], 200)->withCookie($cookie);
-        } catch (\Throwable $e) {
-            report($e);
-            return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
-        }
+        return $this->authService->login($request);
     }
 
     /**
@@ -63,30 +40,6 @@ class AuthController extends Controller
     public function registerPost(UserRegisterRequest $request)
     {
         return $this->authService->create($request);
-    }
-
-    /**
-     * get info user logginIn
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function getUser(Request $request)
-    {
-        try {
-            $data = Auth::user();
-
-            return response()->json([
-                'data' => $data,
-                'success' => true,
-                'message' => "Get user data success!"
-            ]);
-        } catch (Throwable $e) {
-            return response()->json([
-                'data' => [],
-                'success' => false,
-                'message' => "Get user data fail! " . $e->getMessage()
-            ]);
-        }
     }
 
     /**

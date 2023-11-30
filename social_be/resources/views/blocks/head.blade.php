@@ -8,7 +8,7 @@
     <meta property="og:title" content="Website mạng xã hội demo của Hoàng Hiệp🤍" />
     <meta property="og:description" content="Weo com tu my website" />
     <meta property="og:image" content="https://ict-imgs.vgcloud.vn/2020/09/01/19/huong-dan-tao-facebook-avatar.jpg" />
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Instagram</title>
 
     <!-- bootstrap cnd css -->

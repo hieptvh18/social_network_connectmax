@@ -5,6 +5,8 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Enum;
+use App\Enums\ProfileStatusEnum;
 
 class UserRegisterRequest extends FormRequest
 {
@@ -25,19 +27,22 @@ class UserRegisterRequest extends FormRequest
     {
         return [
             'name'=>'required|min:6|max:30',
-            'username'=>'required|unique:users|min:6|max:14|regex:/^\w{4,14}$/',
+            'username'=>'nullable|unique:users|min:6|max:14|regex:/^\w{4,14}$/',
+            'birthday'=>"required|date",
             'email'=>'required|email|unique:users',
-            'password'=>'required|max:16'
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'username.unique' => 'Username is exist!',
-            'username.regex'=>'Username is not valid',
-            'email.unique' => 'Email is exist!',
-            'exists' => 'Not found user ID in database!'
+            'password'=>'required|min:6|max:16',
+            'avatar'=>'nullable|string|max:255',
+            'bio'=>'nullable|string|max:255',
+            'phone'=>'nullable|string|max:255',
+            'website'=>'nullable|string|max:255',
+            'gender'=>'string|in:MALE,FEMALE',
+            'status'=>['nullable','string',
+                new Enum(ProfileStatusEnum::class)
+            ],
+            'facebook_link'=>'nullable|string|max:255',
+            'instagram_link'=>'nullable|string|max:255',
+            'twitter_link'=>'nullable|string|max:255',
+            'linkedln_link'=>'nullable|string|max:255'
         ];
     }
 

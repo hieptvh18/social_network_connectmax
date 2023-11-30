@@ -1,7 +1,6 @@
 const notification = [
     {
         path:'',
-        name:'page.notification',
         meta:{
             title:'Notification'
         },
@@ -9,6 +8,7 @@ const notification = [
         children:[
             {
                 path:'/notifications',
+                name:'page.notification',
                 component:()=>import('@/pages/notification/Notification.vue')
             }
         ]

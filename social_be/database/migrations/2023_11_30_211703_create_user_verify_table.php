@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('user_verify', function (Blueprint $table) {
             $table->id();
-            
-            $table->text('message');
-            $table->morphs('commentable');
+            $table->string('code',10);
+            $table->dateTime('expires_at');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            
+
+            $table->dateTime('verify_at')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('user_verify');
     }
 };

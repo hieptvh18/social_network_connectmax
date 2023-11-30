@@ -3,6 +3,7 @@
 namespace Modules\SocialNetwork\Notifications;
 
 use App\Models\User;
+use App\Models\UserVerify;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -14,14 +15,17 @@ class NotificationUserRegisterAccount extends Notification implements ShouldQueu
 
     protected $user;
 
+    protected $userVerify;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(User $user, UserVerify $userVerify)
     {
         $this->user = $user;
+        $this->userVerify = $userVerify;
     }
 
     /**
@@ -45,9 +49,9 @@ class NotificationUserRegisterAccount extends Notification implements ShouldQueu
     {
         $data = $this->toArray($notifiable);
         return (new MailMessage)
-                    ->subject("Welcome ".$this->user->name." to IG.")
-                    ->markdown('socialnetwork:notifications.registerAccount',$data)
-                    ->action('Go to website', env('APP_URL'))
+                    ->subject("Welcome ".$this->user->name." to ".env('APP_NAME').".")
+                    ->markdown('socialnetwork::notifications.registerAccount',$data)
+                    // ->action('Go to website', env('APP_URL'))
                     ->line('Thank you for using our application!');
     }
 
@@ -60,7 +64,8 @@ class NotificationUserRegisterAccount extends Notification implements ShouldQueu
     public function toArray($notifiable)
     {
         return [
-            'name'=>$this->user->name
+            'name'=>$this->user->name,
+            'codeVerify'=>$this->userVerify->code
         ];
     }
 }
