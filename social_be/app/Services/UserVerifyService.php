@@ -2,13 +2,13 @@
 
 namespace App\Services;
 
-use App\Http\Controllers\Api\AbstractApi;
+use App\Http\Controllers\Api\ApiController;
 use App\Models\User;
 use App\Models\UserVerify;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 
-class UserVerifyService extends AbstractApi
+class UserVerifyService extends ApiController
 {
     public function create($user){
         try{
@@ -25,6 +25,15 @@ class UserVerifyService extends AbstractApi
             DB::rollBack();
             report($er);
             return [];
+        }
+    }
+
+    public function verifyCode($request){
+        try{
+
+        }catch(\Throwable $er){
+            report($er->getMessage());
+            throw $er;
         }
     }
 }

@@ -2,18 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\ApiController;
 use App\Services\AuthService;
 use Illuminate\Http\Request;
 use Throwable;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cookie;
-use Symfony\Component\HttpFoundation\Response;
-use App\Repositories\Interfaces\UserRepositoryInterface;
-use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UserRegisterRequest;
 
-class AuthController extends Controller
+class AuthController extends ApiController
 {
     protected $authService;
 
@@ -39,7 +34,7 @@ class AuthController extends Controller
      */
     public function registerPost(UserRegisterRequest $request)
     {
-        return $this->authService->create($request);
+        return $this->json(['data'=>$this->authService->create($request),'message'=>'core:message.user.register_success']);
     }
 
     /**

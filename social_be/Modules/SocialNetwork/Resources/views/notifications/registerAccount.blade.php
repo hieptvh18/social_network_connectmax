@@ -1,6 +1,6 @@
 <x-mail::message>
     {{-- Greeting --}}
-    # Welcome {{$name}} to IG,
+    # Welcome {{$name}} to Connect Max,
 
     Please enter below code to Verification account: {{$codeVerify}}
 

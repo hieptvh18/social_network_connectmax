@@ -7,13 +7,10 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
-use Modules\Core\Traits\CoreHasCacheableTrait;
 use Prettus\Repository\Eloquent\BaseRepository;
 
 class BaseService
 {
-
-    use CoreHasCacheableTrait;
 
     /**
      * @var int

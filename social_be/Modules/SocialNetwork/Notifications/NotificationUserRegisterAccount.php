@@ -49,7 +49,7 @@ class NotificationUserRegisterAccount extends Notification implements ShouldQueu
     {
         $data = $this->toArray($notifiable);
         return (new MailMessage)
-                    ->subject("Welcome ".$this->user->name." to ".env('APP_NAME').".")
+                    ->subject("Welcome ".$this->user->name." to ".config('app.name').".")
                     ->markdown('socialnetwork::notifications.registerAccount',$data)
                     // ->action('Go to website', env('APP_URL'))
                     ->line('Thank you for using our application!');

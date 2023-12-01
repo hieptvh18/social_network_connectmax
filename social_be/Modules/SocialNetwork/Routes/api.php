@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Modules\SocialNetwork\Http\Controllers\ChatController;
+use Modules\SocialNetwork\Http\Controllers\Public\UserController as PublicUserController;
 use Modules\SocialNetwork\Http\Controllers\UserController;
 use Modules\SocialNetwork\Http\Controllers\PostController;
 use Modules\SocialNetwork\Http\Controllers\CommentController;
@@ -26,63 +27,95 @@ Route::group(
         'prefix' => 'v1'
     ],
     function () {
+
+        // route  scope public
         Route::group([
-            'middleware' => 'auth:sanctum'
-        ],function (){
-            // change password
-            Route::put('/user/change-pass', [UserController::class, 'changePassword']);
-            // search user by username
-            Route::get('/user/search', [UserController::class, 'searchUser'])->name('searchUser');
-            // get user by username
-            Route::get('/user/get-user', [UserController::class, 'getUserByUsername'])->name('getUserByUsername');
-            // get user by id
-            Route::get('/user/{id}', [UserController::class, 'getUserById'])->name('getUserById');
-            // get list user followed
-            Route::get('/message/users', [UserController::class, 'getFriendsUser'])->name('getFriendsUser');
-            // update profile user
-            Route::put('/user/update', [UserController::class, 'update'])->name('updateUser');
-            // following user
-            Route::post('/user/following', [UserController::class, 'followUser'])->name('followUser');
-            // un follow user
-            Route::post('/user/unfollow', [UserController::class, 'unFollowUser'])->name('unFollowUser');
-            // upload avatar
-            Route::post('/user/upload-avatar', [UserController::class, 'uploadAvatar'])->name('uploadAvatar');
+            'prefix'=>'public'
+        ],function(){
+            Route::middleware('guest')->group(function(){
 
-            // show posts of following user
-            Route::get('/posts/get-by-following', [PostController::class, 'getPostByFollowingId'])->name('getPost');
-            // save post
-            Route::post('/posts/save', [PostController::class, 'savePost'])->name('savePost');
-            Route::delete('/posts/{id}', [PostController::class, 'delete'])->name('deletePost');
-            // get post by id
-            Route::get('/posts/{id}', [PostController::class, 'getById'])->name('getById');
-            // action like post
-            Route::post('/post/{id}/like', [PostController::class, 'likePost'])->name('likePost');
+                Route::controller(PublicUserController::class)->group(function () {
+                    // get user by username
+                    Route::get('/user/{username}', 'getUserByUsername')->name('getUserByUsername');
+                });
+            });
+        });
 
-            // comment api
-            Route::get('/comments/post/{id}', [CommentController::class, 'fetchComments']);
-            Route::post('/comments/post/save', [CommentController::class, 'saveComment']);
-            Route::delete('/comments/delete/{id}',[CommentController::class,'delete']);
+        // scope admin
+        Route::group([
+            'prefix'=>'admin'
+        ],function(){
+           
+        });
+
+        // route scope private
+        Route::group([
+            'middleware' => 'auth:sanctum',
+            'prefix'=>'private'
+        ], function () {
+            Route::controller(UserController::class)->group(function () {
+                // change password
+                Route::put('/user/change-password', 'changePassword');
+                // search user by username
+                Route::get('/user/search', 'searchUser')->name('searchUser');
+                // get user by id
+                Route::get('/user/{id}', 'getUserById')->name('getUserById');
+                // get list user followed
+                Route::get('/message/users', 'getFriendsUser')->name('getFriendsUser');
+                // update profile user
+                Route::put('/user/update', 'update')->name('updateUser');
+                // following user
+                Route::post('/user/following', 'followUser')->name('followUser');
+                // un follow user
+                Route::post('/user/unfollow', 'unFollowUser')->name('unFollowUser');
+                // upload avatar
+                Route::post('/user/upload-avatar', 'uploadAvatar')->name('uploadAvatar');
+            });
+
+            Route::controller(PostController::class)->group(function(){
+                // show posts of following user
+                Route::get('/posts/get-by-following', 'getPostByFollowingId')->name('getPost');
+                // save post
+                Route::post('/posts/save', 'savePost')->name('savePost');
+                Route::delete('/posts/{id}', 'delete')->name('deletePost');
+                // get post by id
+                Route::get('/posts/{id}', 'getById')->name('getById');
+                // action like post
+                Route::post('/post/{id}/like', 'likePost')->name('likePost');
+            });
+
+            Route::controller(CommentController::class)->group(function(){
+                // comment api
+                Route::get('/comments/post/{id}', 'fetchComments');
+                Route::post('/comments/post/save', 'saveComment');
+                Route::delete('/comments/delete/{id}', 'delete');
+            });
 
             // recommend follow
             Route::get('recommend-follows', [UserController::class, 'recommendFollow'])->name('recommend-follows');
 
             // handle chat
-            Route::get('/chat/fetch-message/{receiver}',[ChatController::class,'fetchMessage']);
-            Route::post('/chat/save',[ChatController::class,'saveMessage']);
+            Route::get('/chat/fetch-message/{receiver}', [ChatController::class, 'fetchMessage']);
+            Route::post('/chat/save', [ChatController::class, 'saveMessage']);
 
-            // notifications
-            Route::get('/notifications',[NotificationController::class,'fetchNotifications']);
-            Route::put('/notifications/{id}',[NotificationController::class,'updateNotification']);
-            Route::get('/fetch-notification/count-unread',[NotificationController::class,'countUnread']);
-            Route::post('/notification/save',[NotificationController::class,'saveNotification']);
-            Route::delete('/notification/delete/{id}',[NotificationController::class,'delete']);
+            Route::controller(NotificationController::class)->group(function(){
+                // notifications
+                Route::get('/notifications', 'fetchNotifications');
+                Route::put('/notifications/{id}', 'updateNotification');
+                Route::get('/fetch-notification/count-unread', 'countUnread');
+                Route::post('/notification/save', 'saveNotification');
+                Route::delete('/notification/delete/{id}', 'delete');
+            });
 
-            // story
-            Route::get('/list-story-active',[StoryController::class,'fetchListStoryIsActive']);
-            Route::get('/story/{id}',[StoryController::class,'findStory']);
-            Route::get('/fetch-my-story',[StoryController::class,'fetchMyStories']);
-            Route::post('/story/save',[StoryController::class,'storeStory']);
-            Route::delete('/story/soft-delete/{id}',[StoryController::class,'softDeleteStory']);
-            Route::delete('/story/force-delete/{id}',[StoryController::class,'forceDeleteStory']);
+            Route::controller(StoryController::class)->group(function(){
+                // story
+                Route::get('/list-story-active', 'fetchListStoryIsActive');
+                Route::get('/story/{id}', 'findStory');
+                Route::get('/fetch-my-story', 'fetchMyStories');
+                Route::post('/story/save', 'storeStory');
+                Route::delete('/story/soft-delete/{id}', 'softDeleteStory');
+                Route::delete('/story/force-delete/{id}', 'forceDeleteStory');
+            });
         });
-    });
+    }
+);

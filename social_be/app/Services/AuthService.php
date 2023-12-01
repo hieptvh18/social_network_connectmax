@@ -29,11 +29,11 @@ class AuthService extends AbstractApi
             DB::commit();
             event(new EventUserRegisterAccount($model));
 
-            return $this->respSuccess(['data'=>$model],'Register success!');
+            return $model;
         } catch (Throwable $e) {
             DB::rollBack();
             report($e);
-            return $this->respError(false,'Something wrong! '.$e->getMessage(),Response::HTTP_INTERNAL_SERVER_ERROR);
+            throw $e;
         }
     }
 
