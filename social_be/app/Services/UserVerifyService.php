@@ -30,7 +30,16 @@ class UserVerifyService extends ApiController
 
     public function verifyCode($request){
         try{
+            $user = User::where('username',$request->username)->first();
+            $verifyCode = UserVerify::where('user_id',$user->id)->first();
 
+            if($request->code == $verifyCode->code){
+                $verifyCode->verify_at = \Carbon\Carbon::now();
+                $verifyCode->save();
+                return ['success'=>true];
+            }
+
+            return ['success'=>false];
         }catch(\Throwable $er){
             report($er->getMessage());
             throw $er;

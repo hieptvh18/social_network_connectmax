@@ -22,7 +22,7 @@ class UserVerifyPostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username'=>"required|exists:users,id",
+            'username'=>"required|exists:users,username",
             'code'=>"required|string"
         ];
     }
