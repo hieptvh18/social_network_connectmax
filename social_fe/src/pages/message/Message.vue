@@ -5,6 +5,9 @@
         <div class="flex items-center justify-between gap-5 m-5">
             <div class="w-full">
                 <form-search-friend></form-search-friend>
+
+                <button @click="handleClick" class="bg-primary text-white">Click</button>
+                {{ number }}
             </div>
             <button class="">
               <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,4 +37,12 @@
 
 <script lang="ts" setup>
 import FormSearchFriend from '@/components/common/FormSearchFriend.vue';
+import { ref } from 'vue';
+
+let number = ref(1);
+
+const handleClick = ()=>{
+  number.value ++;
+}
+
 </script>

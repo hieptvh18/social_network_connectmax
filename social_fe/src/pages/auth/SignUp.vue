@@ -1,6 +1,7 @@
 <template>
   <!-- lib -->
   <Toast />
+  <Loader v-if="processing" />
 
   <div class="auth-container mt-20 sm:mt-10">
     <h3 class="mb-5 text-center text-lg font-black sm:text-3xl">Getting Started</h3>
@@ -120,6 +121,8 @@ import '@vuepic/vue-datepicker/dist/main.css'
 import {register} from '@/api/auth';
 import {EnumGender} from '@/enums/GenderEnum';
 import { useToast } from 'primevue/usetoast';
+import router from '@/router';
+import Loader from '@/components/common/Loader.vue'
 
 const toast = useToast();
 
@@ -131,6 +134,8 @@ let gender = ref('MALE');
 let password = ref('');
 let passwordField = ref('');
 let errorMessages = ref({});
+
+let processing = ref(false);
 
 const showHidePassword = ()=>{
   const type = passwordField.value.getAttribute('type')
@@ -150,6 +155,7 @@ const formatDate = (date: any) => {
 }
 
 const handleRegister = async ()=>{
+  processing.value = true;
   try{
     let FormData = {
       email: email.value,
@@ -162,12 +168,16 @@ const handleRegister = async ()=>{
     const resp: any = await register(FormData);
     
     if(resp.status == 200){
+      processing.value = false;
       toast.add({ severity: 'success', summary: 'Success', detail: resp.data.message, life: 3000 });
       errorMessages.value = {};
+
+      // redirect to verify email
+      router.push({name:'page.signup.verify',query:{code:resp.data.data.username}});
     }
-    
   }catch(er:any){
     console.log(er);
+    processing.value = false;
     toast.add({ severity: 'error', summary: 'Error', detail: er.response.data.message, life: 3000 });
 
     // show error validate
