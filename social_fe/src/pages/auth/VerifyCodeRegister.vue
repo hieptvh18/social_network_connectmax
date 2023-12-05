@@ -45,10 +45,11 @@ if(!username) router.push({name:'page.404'}) ;
 
 const toast = useToast()
 
-if (!username) router.push({ name: 'page.register' })
+// if (!username) router.push({ name: 'page.signup' })
 
 // get user by username
 const fetchUser = async () => {
+  if (!username) return;
   let resp: any = await getUserByUsername(username)
   if (resp.status == 200) {
     email.value = resp.data.user.email

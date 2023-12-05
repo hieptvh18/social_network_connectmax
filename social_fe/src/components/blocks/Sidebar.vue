@@ -7,6 +7,7 @@
       <router-link
         class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 text-secondary hover:bg-secondary hover:text-white sm:py-4 px-[15px]"
         :to="{ name: 'page.newsfeed' }"
+        :class="{'bg-secondary text-white':currentPageName == 'page.newsfeed'}"
       >
         <div class="">
           <svg
@@ -41,6 +42,7 @@
       <router-link
         class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white sm:py-4 px-[15px]"
         :to="{ name: 'page.message' }"
+        :class="{'bg-secondary text-white':currentPageName == 'page.message'}"
       >
         <div class="">
           <svg
@@ -83,6 +85,7 @@
       <router-link
         class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white sm:py-4 px-[15px]"
         :to="{ name: 'page.notification' }"
+        :class="{'bg-secondary text-white':currentPageName == 'page.notification'}"
       >
         <div class="">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -92,11 +95,12 @@
         </div>
         <span class="font-sm md:inline-block sm:overflow-hidden sm:text-wrap-no sm:hidden">Notifications</span>
       </router-link>
-    </li>
-    <li class="sidebar-item mb-3">
+    </li> 
+    <!-- <li class="sidebar-item mb-3">
       <router-link
         class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white sm:py-4 px-[15px]"
         :to="{ name: 'page.newsfeed' }"
+        :class="{'bg-secondary text-white':currentPageName == 'page.newsfeed'}"
       >
         <div class="">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -106,11 +110,12 @@
         </div>
         <span class="font-sm md:inline-block sm:overflow-hidden sm:text-wrap-no sm:hidden">Explore</span>
       </router-link>
-    </li>
+    </li> -->
     <li class="sidebar-item mb-3">
       <router-link
         class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white sm:py-4 px-[15px]"
         :to="{ name: 'page.profile',params:{username:'hieptvh'} }"
+        :class="{'bg-secondary text-white':currentPageName == 'page.profile'}"
       >
         <div class="">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -127,6 +132,7 @@
       <router-link
         class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white sm:py-4 px-[15px]"
         :to="{ name: 'page.setting' }"
+        :class="{'bg-secondary text-white':currentPageName == 'page.setting'}"
       >
         <div class="">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -198,9 +204,23 @@
 import { useConfirm } from "primevue/useconfirm";
 import { useToast } from "primevue/usetoast";
 import router from "@/router";
+import { ref } from "vue";
+import { useRoute } from "vue-router";
+import { watch } from "vue";
 
 const confirm = useConfirm();
 const toast = useToast();
+const route = useRoute(); 
+
+const currentPageName = ref(route.name);
+
+// avtive route css
+watch(
+  () => route.name,
+  async () => {
+    currentPageName.value = route.name;
+  }
+);
 
 const handleLogout = () =>{
   console.log('logout handle');

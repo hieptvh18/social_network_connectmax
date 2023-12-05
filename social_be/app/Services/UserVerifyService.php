@@ -10,6 +10,10 @@ use Throwable;
 
 class UserVerifyService extends ApiController
 {
+    public function __construct(){
+        
+    }
+
     public function create($user){
         try{
             DB::beginTransaction();

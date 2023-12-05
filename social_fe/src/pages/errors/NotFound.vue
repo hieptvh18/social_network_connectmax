@@ -1,7 +1,6 @@
 <template>
   <div class="wrapper">
-    404
-    <!-- <div class="landing-page">
+    <div class="landing-page">
       <div style="text-align: center" class="icon__download">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -186,7 +185,7 @@
         <button class="bg-primary hover:bg-blue-700">Back to home</button>
     </router-link>
       
-    </div> -->
+    </div>
   </div>
 </template>
 <script setup lang="ts">

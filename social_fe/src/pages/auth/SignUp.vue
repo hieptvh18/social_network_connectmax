@@ -119,7 +119,6 @@ import { ref } from 'vue'
 import VueDatePicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
 import {register} from '@/api/auth';
-import {EnumGender} from '@/enums/GenderEnum';
 import { useToast } from 'primevue/usetoast';
 import router from '@/router';
 import Loader from '@/components/common/Loader.vue'
