@@ -10,7 +10,20 @@ const message = [
             {
                 name:'page.message',
                 path:'/messager',
-                component:()=>import('@/pages/message/Message.vue')
+                component:()=>import('@/pages/message/Message.vue'),
+
+                children:[
+                    // {
+                    //     name:'page.messager.default',
+                    //     path:'/',
+                    //     component:()=>import('@/components/message/ChatViewDefault.vue')
+                    // },
+                    {
+                        name:'page.messager.detail',
+                        path:':username',
+                        component:()=>import('@/components/message/ChatView.vue')
+                    }
+                ]
             }
         ]
     }

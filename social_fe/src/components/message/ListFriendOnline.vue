@@ -1,10 +1,10 @@
 <template>
-    <div class="hidden sm:block">
+    <div class="">
         <ul class="max-h-screen h-[80vh] overflow-y-scroll">
             <li
             v-for="(item, index) in [1,1,1,2,3,1,1,1,1,1,1,1,1,1,1,1]" :key="index"
              class="">
-                <router-link :to="{name:'page.message'}" class="flex justify-between rounded-lg gap-2 px-5 py-3 hover:bg-secondary1">
+                <router-link :to="{name:'page.messager.detail',params:{username:'hieptvh'}}" class="flex justify-between rounded-lg gap-2 px-5 py-3 hover:bg-secondary1">
                     <div class="flex items-center gap-2">
                         <div class="avatar w-10 h-10 rounded-full overflow-hidden">
                             <img src="https://i.pinimg.com/280x280_RS/28/db/5e/28db5ed514a161de341f385f0244f720.jpg" class="w-full object-cover" alt="name">
