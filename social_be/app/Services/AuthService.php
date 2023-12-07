@@ -39,28 +39,34 @@ class AuthService extends AbstractApi
 
     public function login($request){
         try {
-            $credentials = request(['username', 'password']);
+            $credentials = request(['email', 'password']);
             if (!Auth::attempt($credentials)) {
-                return response()->json(['status' => 'fail', 'message' => 'Username or password invalid!', 'data' => []], Response::HTTP_UNAUTHORIZED);
+                return response()->json(['status' => 'fail', 'message' => __('Email or password invalid!'), 'data' => []], Response::HTTP_UNAUTHORIZED);
             }
             // ok
             $user = Auth::user();
 
             $token = $user->createToken('token')->plainTextToken;
 
-            $cookie = cookie('jwtlogin', $token, 60 * 24); //1 day
-
-            return response()->json([
+            $resp = response()->json([
                 'status' => 'ok',
                 'data' => [
                     'token' => $token,
                     'data' => $user
                 ],
                 'message' => 'Auth success!'
-            ], 200)->withCookie($cookie);
+            ], 200);
+
+            // remember login
+            if($request->remember){
+                $cookie = cookie('jwtlogin', $token, 60 * 24); //1 day
+                $resp->withCookie($cookie);
+            }
+
+            return $resp;
         } catch (\Throwable $e) {
             report($e);
-            return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
+            throw $e;
         }
     }
 
@@ -72,7 +78,7 @@ class AuthService extends AbstractApi
             return response()->json(['status' => 'ok', 'message' => 'Logout success!']);
         } catch (Throwable $e) {
             report($e->getMessage());
-            return response()->json(['status' => 'fail', 'message' => 'Logout fail!'],Response::HTTP_INTERNAL_SERVER_ERROR);
+            throw $e;
         }
     }
 }

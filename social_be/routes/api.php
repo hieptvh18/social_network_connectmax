@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->group(function () {
     Route::middleware('guest')->group(function (){
         Route::post('register', [AuthController::class, 'registerPost'])->name('register');
-        Route::post('login', [AuthController::class, 'loginUsername'])->name('login');
+        Route::post('login', [AuthController::class, 'loginPost'])->name('login');
         
         // social auth
         Route::get('auth/{provider}/redirect', [\App\Http\Controllers\Api\SocialAuthController::class, 'redirectToProvider'])->name('login.google.redirect');

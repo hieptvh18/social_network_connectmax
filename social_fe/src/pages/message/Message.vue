@@ -47,14 +47,19 @@
 <script lang="ts" setup>
 import FormSearchFriend from '@/components/common/FormSearchFriend.vue'
 import ListFriendOnline from '@/components/message/ListFriendOnline.vue'
-import { ref } from 'vue'
+import { ref,watch } from 'vue'
 import { useRoute } from 'vue-router';
 
 let showRouterView = ref(false);
 const route = useRoute();
-let username = route.params.username;
 
-if(username) showRouterView.value = true;
-else showRouterView.value = false;
+// check route change
+watch(
+  () => route.params.username,
+  async () => {
+    if(route.params.username) showRouterView.value = true;
+    else showRouterView.value = false;
+  }
+);
 
 </script>

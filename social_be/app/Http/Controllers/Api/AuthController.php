@@ -7,6 +7,7 @@ use App\Services\AuthService;
 use Illuminate\Http\Request;
 use Throwable;
 use App\Http\Requests\UserRegisterRequest;
+use App\Http\Requests\LoginPostRequest;
 
 class AuthController extends ApiController
 {
@@ -18,11 +19,11 @@ class AuthController extends ApiController
     }
 
     /**
-     * login with username && password
+     * login with email && password
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function loginUsername(Request $request)
+    public function loginPost(LoginPostRequest $request)
     {
         return $this->authService->login($request);
     }
