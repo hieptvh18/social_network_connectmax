@@ -1,13 +1,8 @@
 import Instance from './instance'
 import { EnumGender } from '@/enums/GenderEnum'
 
-// get data current user login
-export const getUser = async () => {
-  const url = '/accounts/user'
-  return Instance.get(url)
-}
 // login with username & password
-export const loginUsername = (formData: object) => {
+export const login = (formData: object) => {
   let url = '/login'
   return Instance.post(url, formData)
 }

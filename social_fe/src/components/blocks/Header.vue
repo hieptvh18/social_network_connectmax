@@ -41,9 +41,11 @@
     </div>
   </div>
 </template>
-<script lang="ts">
-export default {
-  name: 'header-block',
-  components: {}
-}
+<script setup lang="ts">
+import { useAuthStore } from '@/stores/auth';
+
+const auth = useAuthStore();
+console.log(auth.authUser);
+console.log(auth.isAuthenticated);
+
 </script>
