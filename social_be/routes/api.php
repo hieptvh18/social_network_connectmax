@@ -22,7 +22,7 @@ Route::prefix('v1')->group(function () {
     });
 
     Route::middleware('auth:sanctum')->group(function () {
-        Route::post('/accounts/logout', [AuthController::class, 'logout'])->name('logout');
+        Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 
         // protected broadcast api
         Broadcast::routes(['middleware' => ['auth:sanctum']]);

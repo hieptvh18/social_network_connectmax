@@ -75,7 +75,7 @@ class AuthService extends AbstractApi
         try {
             $cookie = Cookie::forget('jwtlogin');
             $request->user()->currentAccessToken()->delete();
-            return response()->json(['status' => 'ok', 'message' => 'Logout success!']);
+            return true;
         } catch (Throwable $e) {
             report($e->getMessage());
             throw $e;

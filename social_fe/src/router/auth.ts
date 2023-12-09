@@ -1,7 +1,10 @@
+import { isNotAuth } from '@/middlewares/auth';
+
 const login = [
     {
         'path': "/auth",
         component: ()=> import('@/layouts/AuthLayout.vue'),
+        beforeEnter: isNotAuth, // middleware
 
         children:[
             {

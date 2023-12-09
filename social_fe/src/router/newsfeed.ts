@@ -1,3 +1,5 @@
+import { isAuth } from '@/middlewares/auth';
+
 const newsfeed = [
     {
         path:'',
@@ -5,6 +7,7 @@ const newsfeed = [
             title:'Connect Max'
         },
         component: ()=>import('@/layouts/MainLayout.vue'),
+        beforeEnter: isAuth,
 
         children:[
             {

@@ -24,4 +24,11 @@ class UserController extends ApiController
     {
         return $this->json(['user'=>$this->userService->getUserByUsername($username)]);
     }
+
+    /**
+     * get current user login
+     */
+    public function getUser(Request $request){
+        return $this->json(['user'=>auth()->user()]);
+    }
 }

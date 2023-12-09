@@ -1,3 +1,5 @@
+import { isAuth } from '@/middlewares/auth';
+
 const profile = [
     {
         path:'/',
@@ -5,6 +7,8 @@ const profile = [
         meta:{
             title:'Profile'
         },
+        beforeEnter: isAuth,
+
         children:[
             {
                 path:'/:username',

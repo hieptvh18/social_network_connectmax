@@ -33,6 +33,6 @@ export const verifyRegister = (data: any)=>{
 
 // api logout account
 export const logout = () => {
-  let url = '/accounts/logout'
+  let url = '/logout'
   return Instance.delete(url)
 }

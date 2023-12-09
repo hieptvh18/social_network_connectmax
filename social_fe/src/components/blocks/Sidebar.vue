@@ -114,7 +114,7 @@
     <li class="sidebar-item mb-3">
       <router-link
         class="group flex flex-col sm:flex-row text-xs sm:text-base gap-1 sm:gap-5 items-center rounded-lg h-11 hover:bg-secondary text-secondary hover:text-white sm:py-4 px-[15px]"
-        :to="{ name: 'page.profile',params:{username:'hieptvh'} }"
+        :to="{ name: 'page.profile',params:{username: auth.user.username ?? ''} }"
         :class="{'bg-secondary text-white':currentPageName == 'page.profile'}"
       >
         <div class="">
@@ -207,7 +207,9 @@ import router from "@/router";
 import { ref } from "vue";
 import { useRoute } from "vue-router";
 import { watch } from "vue";
+import { useAuthStore } from "@/stores/auth";
 
+const auth = useAuthStore();
 const confirm = useConfirm();
 const toast = useToast();
 const route = useRoute(); 
@@ -222,8 +224,8 @@ watch(
   }
 );
 
-const handleLogout = () =>{
-  console.log('logout handle');
+const handleLogout = async () =>{
+  await auth.logout();
 }
 
 const confirmLogoutDialog = () => {
@@ -234,8 +236,9 @@ const confirmLogoutDialog = () => {
         rejectClass: 'p-button-text p-button-text',
         acceptClass: 'p-button-danger p-button-text',
         accept: () => {
-            toast.add({ severity: 'info', summary: 'Confirmed', detail: 'Record deleted', life: 3000 });
-            router.push({ name: 'page.signin'})
+          handleLogout()
+          toast.add({ severity: 'info', summary: 'Confirmed', detail: 'Logout success', life: 3000 });
+          router.push({ name: 'page.signin'})
         },
         reject: () => {
             toast.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });

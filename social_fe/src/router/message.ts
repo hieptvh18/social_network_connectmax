@@ -1,3 +1,5 @@
+import { isAuth } from '@/middlewares/auth';
+
 const message = [
     {
         path:'',
@@ -5,6 +7,7 @@ const message = [
             title:'Message'
         },
         component:()=>import('@/layouts/MainLayout.vue'),
+        beforeEnter: isAuth,
         
         children:[
             {

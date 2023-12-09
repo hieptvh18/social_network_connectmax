@@ -1,3 +1,5 @@
+import { isAuth } from '@/middlewares/auth';
+
 const setting = [
     {
         path:'/',
@@ -5,6 +7,8 @@ const setting = [
         meta:{
             title:'Setting'
         },
+        beforeEnter: isAuth,
+
         children:[
             {
                 path:'/setting',

@@ -35,7 +35,7 @@ class AuthController extends ApiController
      */
     public function registerPost(UserRegisterRequest $request)
     {
-        return $this->json(['data'=>$this->authService->create($request),'message'=>'core:message.user.register_success']);
+        return $this->json(['data'=>$this->authService->create($request),'message'=>__('core:message.user.register_success')]);
     }
 
     /**
@@ -45,6 +45,6 @@ class AuthController extends ApiController
      */
     public function logout(Request $request)
     {
-        return $this->authService->logout($request);
+        return $this->json(['data'=>$this->authService->logout($request),'message'=>__('core.message.user.logout.success')]);
     }
 }

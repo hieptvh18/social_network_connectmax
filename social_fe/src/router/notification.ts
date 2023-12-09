@@ -1,3 +1,5 @@
+import { isAuth } from '@/middlewares/auth';
+
 const notification = [
     {
         path:'',
@@ -5,6 +7,8 @@ const notification = [
             title:'Notification'
         },
         component:()=>import('@/layouts/MainLayout.vue'),
+        beforeEnter: isAuth,
+
         children:[
             {
                 path:'/notifications',

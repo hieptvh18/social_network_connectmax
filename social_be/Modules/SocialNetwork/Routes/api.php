@@ -33,10 +33,15 @@ Route::group(
             'prefix'=>'public'
         ],function(){
             Route::middleware('guest')->group(function(){
-
                 Route::controller(PublicUserController::class)->group(function () {
                     // get user by username
-                    Route::get('/user/{username}', 'getUserByUsername')->name('getUserByUsername');
+                    Route::get('/user/{username}', 'getUserByUsername')->name('user.getUserByUsername');
+                });
+            });
+
+            Route::middleware('auth:sanctum')->group(function(){
+                Route::controller(PublicUserController::class)->group(function () {
+                    Route::get('/user', 'getUser')->name('user.getUser');
                 });
             });
         });

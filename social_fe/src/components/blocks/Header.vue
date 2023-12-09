@@ -16,15 +16,15 @@
         class="focus:outline-none rounded-lg h-full w-full placeholder:text-xs sm:placeholder:text-sm" />
       </div>
       <div class="flex items-center gap-5">
-        <router-link class="font-medium hidden text-secondary sm:inline-block" :to="{name:'page.profile', params:{username: 'hieptvh'}}"
-          >Simon</router-link
+        <router-link class="font-medium hidden text-secondary sm:inline-block" :to="{name:'page.profile', params:{username: auth.user.username ?? ''}}"
+          >{{ auth.user.name }}</router-link
         >
         <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg overflow-hidden">
-          <router-link :to="{name:'page.profile', params:{username: 'hieptvh'}}"
+          <router-link :to="{name:'page.profile', params:{username: auth.user.username ?? ''}}"
           >
           <img
-            src="https://m.media-amazon.com/images/S/pv-target-images/ae4816cade1a5b7f29787d0b89610132c72c7747041481c6619b9cc3302c0101.jpg"
-            class="w-full"
+          :src="auth.user.avatar"
+          class="w-full"
             alt="simon"
           />
           </router-link
@@ -35,7 +35,7 @@
 
     <!-- if screen mobile -> show -->
     <div class="w-4 h-4 sm:hidden">
-      <router-link :to="{name:'page.profile', params:{username: 'hieptvh'}}">
+      <router-link :to="{name:'page.profile', params:{username: auth.user.username ?? ''}}">
             <img src="@/assets/images/Message.svg" class="w-full object-cover" alt="">
         </router-link>
     </div>
@@ -45,7 +45,4 @@
 import { useAuthStore } from '@/stores/auth';
 
 const auth = useAuthStore();
-console.log(auth.authUser);
-console.log(auth.isAuthenticated);
-
 </script>
